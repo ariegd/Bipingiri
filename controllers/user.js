@@ -69,5 +69,21 @@ module.exports = {
       },
   
     deleteUser: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const update = await connection
+              .promise()
+              .query(
+                `DELETE FROM  users where id = ?`,
+                [id]
+              );
+            res.status(200).json({
+              message: "deleted",
+            });
+          } catch (err) {
+            res.status(500).json({
+              message: err,
+            });
+          }
       }
   }
