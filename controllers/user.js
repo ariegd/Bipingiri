@@ -18,6 +18,19 @@ module.exports = {
       },
   
     readUser: async (req, res) => {
+        try {
+            const {id} = req.params
+            const data = await connection.promise().query(
+              `SELECT *  from users where id = ?`,[id]
+            );
+            res.status(200).json({
+              user: data[0][0],
+            });
+          } catch (err) {
+            res.status(500).json({
+              message: err,
+            });
+          }
       },
 
     readAllUser: async (req, res) => {
