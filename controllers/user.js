@@ -49,6 +49,23 @@ module.exports = {
       },
   
     updateUser: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { name, address, country } = req.body;
+            const update = await connection
+              .promise()
+              .query(
+                `UPDATE users set name = ?, address = ?, country = ? where id = ?`,
+                [ name, address, country,id]
+              );
+            res.status(200).json({
+              message: "updated",
+            });
+          } catch (err) {
+            res.status(500).json({
+              message: err,
+            });
+          }
       },
   
     deleteUser: async (req, res) => {
