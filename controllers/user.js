@@ -1,3 +1,5 @@
+const connection = require('../dbPool');
+
 module.exports = {
     createUser: async (req, res) => {
         try {
