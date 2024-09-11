@@ -1,11 +1,12 @@
-const database = require('./dbConnection');
-const pool = require('./dbPool');
+const database = require('./dbConnection')
+const pool = require('./dbPool')
 const express = require('express')
+const userRoutes = require('./routes/user.js')
 const app = express()
 const PORT = 8082
 
-app.use(express.json())
-app.get('/',(req,res)=>{res.send("Hi")})
+app.use(express.json());
+app.use('/users', userRoutes);
 
 database.connect((err) => {
     if (err) {
