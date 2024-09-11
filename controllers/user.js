@@ -21,6 +21,18 @@ module.exports = {
       },
 
     readAllUser: async (req, res) => {
+        try {
+            const data = await connection.promise().query(
+              `SELECT *  from users;`
+            );
+            res.status(202).json({
+              users: data[0],
+            });
+          } catch (err) {
+            res.status(500).json({
+              message: err,
+            });
+          }
       },
   
     updateUser: async (req, res) => {
