@@ -5,5 +5,6 @@ Creating a basic CRUD (Create, Read, Update, Delete) application with Node.js an
 reference [https://medium.com/@bipingiri27/crud-with-node-js-express-mysql-7ce1d4acb418]
 
 ## Pre-install
-> npm install express
-> npm install mysql2
+
+- npm install express
+- npm install mysql2
